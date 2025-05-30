@@ -1,5 +1,6 @@
 import React from 'react';
 import { getReviews } from '@/data/services/review';
+import Skeleton from './ui/Skeleton';
 
 type Props = {
   productId: number;
@@ -36,9 +37,7 @@ export default async function Reviews({ productId }: Props) {
                   </div>
                   <span className="sr-only">{review.rating} out of 5 stars</span>
                 </div>
-
                 {review.comment && <p className="mb-2">{review.comment}</p>}
-
                 <p className="text-gray text-xs">Reviewed on {new Date().toLocaleDateString()}</p>
               </li>
             );
@@ -47,4 +46,8 @@ export default async function Reviews({ productId }: Props) {
       )}
     </div>
   );
+}
+
+export function ReviewsSkeleton() {
+  return <Skeleton />;
 }

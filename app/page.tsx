@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import ProductList from '@/components/ProductList';
+import ProductList, { ProductListSkeleton } from '@/components/ProductList';
 import Search from '@/components/Search';
-import Skeleton from '@/components/ui/Skeleton';
 
 type Props = {
   searchParams: Promise<{
@@ -15,7 +14,7 @@ export default async function RootPage({ searchParams }: Props) {
   return (
     <>
       <Search />
-      <Suspense fallback={<Skeleton />}>
+      <Suspense fallback={<ProductListSkeleton />}>
         <ProductList searchQuery={q} />
       </Suspense>
     </>

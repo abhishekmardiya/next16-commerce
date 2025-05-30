@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react';
-import Modal from '@/components/Modal';
-import Product from '@/components/Product';
-import Skeleton from '@/components/ui/Skeleton';
+import Product, { ProductSkeleton } from '@/components/Product';
+import Modal from '@/components/ui/Modal';
 
 type Props = {
   params: Promise<{
@@ -15,7 +14,7 @@ export default async function ProductModal({ params }: Props) {
 
   return (
     <Modal goBackOnClose openModal={true} title="Quick Preview">
-      <Suspense fallback={<Skeleton />}>
+      <Suspense fallback={<ProductSkeleton />}>
         <Product productId={productId} />
       </Suspense>
       <div className="mt-6 flex justify-center">
