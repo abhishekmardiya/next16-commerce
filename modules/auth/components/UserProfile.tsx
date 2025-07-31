@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import UserIcon from '../../../components/ui/icons/UserIcon';
 import { getCurrentAccount } from '../auth-queries';
 import LoginButton from './LoginButton';
@@ -10,7 +10,9 @@ export default async function UserProfile() {
     <div className="flex items-center gap-2">
       <div className="flex flex-col items-end gap-1">
         <span className="text-sm">{account?.name}</span>
-        <LoginButton />
+        <Suspense>
+          <LoginButton />
+        </Suspense>
       </div>
       <UserIcon className="text-primary hover:text-primary-dark cursor-pointer transition-colors" />
     </div>
