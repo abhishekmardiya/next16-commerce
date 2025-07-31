@@ -1,5 +1,5 @@
+import { User } from 'lucide-react';
 import React, { Suspense } from 'react';
-import UserIcon from '../../../components/ui/icons/UserIcon';
 import { getCurrentAccount } from '../auth-queries';
 import LoginButton from './LoginButton';
 
@@ -14,7 +14,7 @@ export default async function UserProfile() {
           <LoginButton />
         </Suspense>
       </div>
-      <UserIcon className="text-primary hover:text-primary-dark cursor-pointer transition-colors" />
+      <User className="text-primary hover:text-primary-dark size-8 cursor-pointer transition-colors" />
     </div>
   );
 }
