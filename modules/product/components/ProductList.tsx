@@ -14,7 +14,7 @@ export default async function ProductList({ searchQuery, sort }: Props) {
   const hasProducts = products.length > 0;
 
   if (!hasProducts) {
-    return <p className="text-gray italic">No products found.</p>;
+    return <p className="text-gray w-full self-center py-8 text-center italic">No products found.</p>;
   }
 
   return (
