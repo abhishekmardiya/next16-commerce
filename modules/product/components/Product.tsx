@@ -35,7 +35,7 @@ export default async function Product({ productId, details, imageClassName }: Pr
 export function ProductSkeleton({ className, isDetails = false }: { className?: string; isDetails?: boolean }) {
   return (
     <div className={cn('dark:bg-card-dark flex flex-col bg-white', className)}>
-      <div className={cn('bg-card dark:bg-section w-full', isDetails ? 'h-96' : 'h-60')} />
+      <div className={cn('bg-card dark:bg-section w-full', isDetails ? 'h-96' : 'h-62')} />
       <Skeleton className="p-4" />
     </div>
   );

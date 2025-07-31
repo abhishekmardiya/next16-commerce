@@ -1,11 +1,12 @@
 import 'server-only';
 
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 import type { Review } from '@prisma/client';
 
-export async function getProduct(productId: number) {
+export const getProduct = cache(async (productId: number) => {
   await slow();
 
   const product = await prisma.product.findUnique({
@@ -15,9 +16,9 @@ export async function getProduct(productId: number) {
     notFound();
   }
   return product;
-}
+});
 
-export async function getProductDetails(productId: number) {
+export const getProductDetails = cache(async (productId: number) => {
   await slow();
 
   const productDetails = await prisma.productDetail.findUnique({
@@ -28,9 +29,8 @@ export async function getProductDetails(productId: number) {
     notFound();
   }
   return productDetails;
-}
-
-export async function getProducts(searchQuery?: string, sort?: 'asc' | 'desc') {
+});
+export const getProducts = cache(async (searchQuery?: string, sort?: 'asc' | 'desc') => {
   await slow();
 
   return prisma.product.findMany({
@@ -44,18 +44,18 @@ export async function getProducts(searchQuery?: string, sort?: 'asc' | 'desc') {
       },
     },
   });
-}
+});
 
-export async function getReviews(productId: number): Promise<Review[]> {
+export const getReviews = cache(async (productId: number): Promise<Review[]> => {
   await slow();
 
   return prisma.review.findMany({
     orderBy: { createdAt: 'desc' },
     where: { productId },
   });
-}
+});
 
-export async function getCategories() {
+export const getCategories = cache(async () => {
   await slow();
 
   const categories = await prisma.product.findMany({
@@ -79,4 +79,4 @@ export async function getCategories() {
       return item.category;
     })
     .filter(Boolean) as string[];
-}
+});

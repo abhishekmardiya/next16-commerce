@@ -1,9 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { useAuth } from '@/modules/auth/components/AuthProvider';
 
-export default function Banner() {
+export default function DiscountBanner() {
   const { isAuthenticated } = useAuth();
   const [isDismissed, setIsDismissed] = useState(false);
 
@@ -23,6 +24,14 @@ export default function Banner() {
               ? 'Check out your personalized offers and exclusive member discounts.'
               : 'Sign up today and unlock exclusive discounts on your favorite products!'}
           </p>
+          {isAuthenticated && (
+            <Link
+              href="#"
+              className="text-primary hover:text-primary-dark mt-3 inline-block text-sm font-medium transition-colors"
+            >
+              View Discounts
+            </Link>
+          )}
         </div>
         <div className="ml-4 flex flex-col gap-2">
           <button

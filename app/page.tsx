@@ -1,7 +1,7 @@
 import { ArrowUp, ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import React, { Suspense } from 'react';
-import Banner from '@/components/Banner';
+import DiscountBanner from '@/components/DiscountBanner';
 import Search from '@/components/Search';
 import LinkStatus from '@/components/ui/LinkStatus';
 import ProductList, { ProductListSkeleton } from '@/modules/product/components/ProductList';
@@ -18,7 +18,7 @@ export default async function RootPage({ searchParams }: Props) {
 
   return (
     <>
-      <Banner />
+      <DiscountBanner />
       <Search />
       <div className="flex flex-col gap-4">
         <SortButton sort={sort} />

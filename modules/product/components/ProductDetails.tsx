@@ -7,6 +7,10 @@ type Props = {
   productId: number;
 };
 
+export function prefetchProductDetails(productId: number) {
+  return getProductDetails(productId);
+}
+
 export default async function ProductDetails({ productId }: Props) {
   'use cache';
   cacheLife('hours');
