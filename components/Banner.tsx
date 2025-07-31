@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useAuth } from '@/app/providers/AuthProvider';
+import { useAuth } from '@/modules/auth/components/AuthProvider';
 
 export default function Banner() {
   const { isAuthenticated } = useAuth();

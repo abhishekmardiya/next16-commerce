@@ -1,7 +1,7 @@
 import { Star } from 'lucide-react';
 import React from 'react';
-import { getReviews } from '@/data/services/review';
-import Skeleton from './ui/Skeleton';
+import Skeleton from '@/components/ui/Skeleton';
+import { getReviews } from '../product-queries';
 
 type Props = {
   productId: number;

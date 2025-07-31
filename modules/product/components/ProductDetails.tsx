@@ -1,6 +1,6 @@
 import React from 'react';
 import Skeleton from '@/components/ui/Skeleton';
-import { getProductDetails } from '@/data/services/product';
+import { getProductDetails } from '../product-queries';
 
 type Props = {
   productId: number;

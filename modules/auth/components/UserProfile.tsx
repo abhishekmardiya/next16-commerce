@@ -1,8 +1,7 @@
 import React from 'react';
-
-import { getCurrentAccount } from '@/data/services/auth';
+import UserIcon from '../../../components/ui/icons/UserIcon';
+import { getCurrentAccount } from '../auth-queries';
 import LoginButton from './LoginButton';
-import UserIcon from './ui/icons/UserIcon';
 
 export default async function UserProfile() {
   const account = await getCurrentAccount();

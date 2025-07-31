@@ -23,72 +23,84 @@ const ACCOUNTS = [
 
 const PRODUCTS = [
   {
+    category: 'Audio',
     description: 'High-quality noise cancelling headphones with 20 hours battery life',
     id: 1,
     name: 'Wireless Headphones',
     price: 199.99,
   },
   {
+    category: 'Wearables',
     description: 'Fitness tracker with heart rate monitor and sleep tracking',
     id: 2,
     name: 'Smart Watch',
     price: 149.95,
   },
   {
+    category: 'Audio',
     description: 'Waterproof Bluetooth speaker with 360-degree sound',
     id: 3,
     name: 'Portable Speaker',
     price: 79.99,
   },
   {
+    category: 'Accessories',
     description: 'Ergonomic wireless mouse with precision tracking',
     id: 4,
     name: 'Wireless Mouse',
     price: 29.99,
   },
   {
+    category: 'Accessories',
     description: 'Mechanical keyboard with RGB backlighting',
     id: 5,
     name: 'Gaming Keyboard',
     price: 89.95,
   },
   {
+    category: 'Accessories',
     description: 'Ultra-thin laptop stand with adjustable height',
     id: 6,
     name: 'Laptop Stand',
     price: 39.99,
   },
   {
+    category: 'Accessories',
     description: 'Fast wireless charger compatible with all Qi devices',
     id: 7,
     name: 'Wireless Charger',
     price: 24.99,
   },
   {
+    category: 'Electronics',
     description: 'HD webcam with auto-focus and noise reduction',
     id: 8,
     name: 'HD Webcam',
     price: 59.99,
   },
   {
+    category: 'Electronics',
     description: 'Portable power bank with 20,000mAh capacity',
     id: 9,
     name: 'Power Bank',
     price: 49.95,
   },
   {
+    category: 'Smart Home',
     description: 'Smart home security camera with night vision',
     id: 10,
     name: 'Security Camera',
     price: 129.99,
   },
   {
+    category: 'Kitchen',
     description: 'Premium coffee maker with programmable timer',
     id: 11,
     name: 'Coffee Maker',
     price: 179.95,
   },
   {
+    category: 'Home',
     description: 'Air purifier with HEPA filter for clean air',
     id: 12,
     name: 'Air Purifier',
@@ -328,12 +340,14 @@ async function seed() {
     PRODUCTS.map(product => {
       return prisma.product.upsert({
         create: {
+          category: product.category,
           description: product.description,
           id: product.id,
           name: product.name,
           price: product.price,
         },
         update: {
+          category: product.category,
           description: product.description,
           name: product.name,
           price: product.price,

@@ -2,9 +2,9 @@ import { ArrowUp, ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 import React, { Suspense } from 'react';
 import Banner from '@/components/Banner';
-import ProductList, { ProductListSkeleton } from '@/components/ProductList';
 import Search from '@/components/Search';
 import LinkStatus from '@/components/ui/LinkStatus';
+import ProductList, { ProductListSkeleton } from '@/modules/product/components/ProductList';
 
 type Props = {
   searchParams: Promise<{

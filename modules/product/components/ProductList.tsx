@@ -1,9 +1,9 @@
 import { cacheLife } from 'next/dist/server/use-cache/cache-life';
 import Link from 'next/link';
 import React from 'react';
-import { getProducts } from '@/data/services/product';
-import ProductImage from './ui/ProductImage';
-import Skeleton from './ui/Skeleton';
+import ProductImage from '@/components/ui/ProductImage';
+import Skeleton from '@/components/ui/Skeleton';
+import { getProducts } from '../product-queries';
 
 type Props = {
   searchQuery?: string;

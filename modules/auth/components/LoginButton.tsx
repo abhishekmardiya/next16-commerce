@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useTransition } from 'react';
-import { useAuth } from '@/app/providers/AuthProvider';
-import { logIn, logOut } from '@/data/actions/auth';
+import { useAuth } from '@/modules/auth/components/AuthProvider';
+import { logOut, logIn } from '../auth-actions';
 
 export default function LoginButton() {
   const [isPending, startTransition] = useTransition();

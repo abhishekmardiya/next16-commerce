@@ -1,9 +1,9 @@
 import { cacheLife } from 'next/dist/server/use-cache/cache-life';
 import React from 'react';
-import { getProduct } from '@/data/services/product';
+import ProductImage from '@/components/ui/ProductImage';
+import Skeleton from '@/components/ui/Skeleton';
 import { cn } from '@/utils/cn';
-import ProductImage from './ui/ProductImage';
-import Skeleton from './ui/Skeleton';
+import { getProduct } from '../product-queries';
 
 type Props = {
   productId: number;

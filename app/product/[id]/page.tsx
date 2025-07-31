@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React, { Suspense } from 'react';
-import Product, { ProductSkeleton } from '@/components/Product';
-import ProductDetails, { ProductDetailsSkeleton } from '@/components/ProductDetails';
-import Reviews, { ReviewsSkeleton } from '@/components/Reviews';
 import Card from '@/components/ui/Card';
+import Product, { ProductSkeleton } from '@/modules/product/components/Product';
+import ProductDetails, { ProductDetailsSkeleton } from '@/modules/product/components/ProductDetails';
+import Reviews, { ReviewsSkeleton } from '@/modules/product/components/Reviews';
 
 type Props = {
   params: Promise<{
