@@ -1,14 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { cacheLife } from 'next/dist/server/use-cache/cache-life';
+
 import Link from 'next/link';
 import React from 'react';
 import { getCategories } from '@/modules/product/product-queries';
 import ShowMore from './ui/ShowMore';
 
 export default async function Footer() {
-  'use cache';
-  cacheLife('days');
-
   const categories = await getCategories();
 
   return (
