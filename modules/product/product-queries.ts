@@ -1,5 +1,6 @@
 import 'server-only';
 
+import { cacheLife } from 'next/dist/server/use-cache/cache-life';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { prisma } from '@/db';
@@ -29,20 +30,44 @@ export const getProductDetails = cache(async (productId: number) => {
   }
   return productDetails;
 });
-export const getProducts = cache(async (searchQuery?: string, sort?: 'asc' | 'desc') => {
+export const getProducts = cache(async (searchQuery?: string, sort?: 'asc' | 'desc', page = 1, limit = 9) => {
+  'use cache';
+  cacheLife('hours');
+
   await slow();
 
-  return prisma.product.findMany({
-    orderBy: {
-      name: sort === 'asc' ? 'asc' : 'desc',
-    },
-    where: {
-      name: {
-        contains: searchQuery,
-        mode: 'insensitive', // Remove with sqlite
+  const skip = (page - 1) * limit;
+
+  const [products, total] = await Promise.all([
+    prisma.product.findMany({
+      orderBy: {
+        name: sort === 'asc' ? 'asc' : 'desc',
       },
-    },
-  });
+      skip,
+      take: limit,
+      where: {
+        name: {
+          contains: searchQuery,
+          mode: 'insensitive', // Remove with sqlite
+        },
+      },
+    }),
+    prisma.product.count({
+      where: {
+        name: {
+          contains: searchQuery,
+          mode: 'insensitive', // Remove with sqlite
+        },
+      },
+    }),
+  ]);
+
+  return {
+    currentPage: page,
+    products,
+    total,
+    totalPages: Math.ceil(total / limit),
+  };
 });
 
 export const getReviews = cache(async (productId: number) => {
