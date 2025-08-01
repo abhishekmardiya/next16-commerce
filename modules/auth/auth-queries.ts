@@ -17,7 +17,7 @@ export const getIsAuthenticated = cache(async () => {
 });
 
 export const getAccount = cache(async (accountId: string) => {
-  await slow(1000);
+  await slow();
 
   const account = await prisma.account.findUnique({
     where: {
@@ -29,7 +29,7 @@ export const getAccount = cache(async (accountId: string) => {
 });
 
 export const getAccountWithDetails = cache(async (accountId: string) => {
-  await slow(1000);
+  await slow();
 
   const account = await prisma.account.findUnique({
     include: {
