@@ -34,7 +34,7 @@ export default function Discounts() {
             <div className="flex items-center gap-3">
               <Percent className="text-primary h-5 w-5" />
               <div>
-                <p className="font-medium text-black dark:text-white">{discount.code}</p>
+                <p className="font-medium">{discount.code}</p>
                 <p className="text-sm text-gray-600 dark:text-gray-400">{discount.description}</p>
               </div>
             </div>

@@ -10,7 +10,7 @@ export default function AboutPage() {
       <div className="mx-auto max-w-4xl space-y-12">
         <div className="space-y-8">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-black dark:text-white">About Our Store</h1>
+            <h1>About Our Store</h1>
             <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">Welcome to our modern e-commerce experience</p>
           </div>
 
@@ -22,7 +22,7 @@ export default function AboutPage() {
 
           <div className="grid gap-8 md:grid-cols-2">
             <Card>
-              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">Our Mission</h2>
+              <h2>Our Mission</h2>
               <p className="text-gray-700 dark:text-gray-300">
                 We&apos;re dedicated to providing high-quality products with an exceptional shopping experience. Our
                 platform combines modern technology with user-friendly design to make your shopping journey as smooth as
@@ -30,7 +30,7 @@ export default function AboutPage() {
               </p>
             </Card>
             <Card>
-              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">What We Offer</h2>
+              <h2>What We Offer</h2>
               <div className="space-y-2 text-gray-700 dark:text-gray-300">
                 <p>• Curated selection of premium products</p>
                 <p>• Fast and reliable shipping</p>
@@ -40,7 +40,7 @@ export default function AboutPage() {
               </div>
             </Card>
             <Card>
-              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">Technology</h2>
+              <h2>Technology</h2>
               <p className="text-gray-700 dark:text-gray-300">
                 Built with Next.js 15, our platform leverages the latest web technologies including React Server
                 Components, advanced caching with the &quot;use cache&quot; directive, and modern database management
@@ -48,7 +48,7 @@ export default function AboutPage() {
               </p>
             </Card>
             <Card>
-              <h2 className="mb-4 text-xl font-semibold text-black dark:text-white">Get in Touch</h2>
+              <h2>Get in Touch</h2>
               <p className="text-gray-700 dark:text-gray-300">
                 Have questions or feedback? We&apos;d love to hear from you. Feel free to browse our products or reach
                 out to our support team for assistance.

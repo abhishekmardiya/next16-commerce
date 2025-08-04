@@ -33,7 +33,7 @@ export default function Modal({ openModal, children, goBackOnClose = false, titl
     <dialog
       ref={ref}
       onCancel={handleClose}
-      className="fixed inset-0 m-auto w-[90%] max-w-lg rounded-lg border-none bg-white p-0 shadow-xl backdrop:bg-black/50 backdrop:backdrop-blur-sm"
+      className="dark:bg-card-dark fixed inset-0 m-auto w-[90%] max-w-lg rounded-lg border-none bg-white p-0 shadow-xl backdrop:bg-black/50 backdrop:backdrop-blur-sm"
     >
       <div className="flex w-full flex-col">
         {title && (

@@ -29,7 +29,7 @@ export default async function SavedProducts() {
             <ImagePlaceholder className="size-16 flex-shrink-0 rounded" />
             <div className="min-w-0 flex-1">
               <Link href={`/product/${product.id}`} className="block">
-                <h3 className="truncate font-medium text-black dark:text-white">{product.name}</h3>
+                <h3 className="truncate font-medium">{product.name}</h3>
                 <p className="text-primary mt-1 font-medium">${product.price.toFixed(2)}</p>
               </Link>
             </div>
