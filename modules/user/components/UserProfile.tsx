@@ -15,7 +15,7 @@ export default async function UserProfile() {
           <LoginButton />
         </Suspense>
       </div>
-      <Link href="/user">
+      <Link href="/user" prefetch>
         <span className="sr-only">Go to Profile</span>
         <User
           aria-hidden

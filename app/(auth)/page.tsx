@@ -42,6 +42,8 @@ function SortButton({ sort, searchQuery }: { sort?: 'asc' | 'desc'; searchQuery?
 
   return (
     <Link
+      prefetch
+      scroll={false}
       href={{ pathname: '/', query: queryParams }}
       className="text-primary hover:text-primary-dark inline-flex items-center text-sm font-medium"
     >

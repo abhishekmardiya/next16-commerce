@@ -27,6 +27,7 @@ export default function Pagination({
     <div className="flex items-center gap-2">
       {currentPage > 1 && (
         <Link
+          prefetch
           scroll={false}
           href={createPageUrl(currentPage - 1)}
           className="text-primary hover:text-primary-dark inline-flex items-center px-3 py-2 text-sm font-medium"
