@@ -34,7 +34,6 @@ export async function signOut() {
 }
 
 export async function signIn(email: string, redirectUrl?: string) {
-  console.log({ redirectUrl });
   await slow();
 
   const account = await prisma.account.findFirst({
