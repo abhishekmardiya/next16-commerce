@@ -1,14 +1,10 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-
 import { prisma } from '@/db';
-import { slow } from '@/utils/slow';
 import { verifyAuth } from '../auth/auth-actions';
 
 async function saveProduct(productId: number) {
-  await slow();
-
   const accountId = await verifyAuth('/product/' + productId);
 
   await prisma.savedProduct.create({
