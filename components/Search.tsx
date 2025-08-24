@@ -4,6 +4,7 @@ import Form from 'next/form';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useTransition } from 'react';
 import SearchStatus from './ui/SearchStatus';
+import type { Route } from 'next';
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -13,7 +14,7 @@ export default function Search() {
 
   return (
     <>
-      <Form className="relative" action="">
+      <Form className="relative" action={'' as Route}>
         <input
           className="pl-9 text-sm outline-offset-2 focus:outline-2"
           name="q"

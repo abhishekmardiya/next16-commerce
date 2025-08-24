@@ -4,7 +4,7 @@ import { getIsAuthenticated } from '@/features/auth/auth-queries';
 import { AuthProvider } from '@/features/auth/components/AuthProvider';
 import UserProfile, { UserProfileSkeleton } from '@/features/user/components/UserProfile';
 
-export default async function AuthLayout({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) {
+export default async function AuthLayout({ children, modal }: LayoutProps<'/'>) {
   const isAuthenticated = getIsAuthenticated();
 
   return (

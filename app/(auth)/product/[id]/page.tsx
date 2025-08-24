@@ -1,5 +1,4 @@
 import { ArrowLeft } from 'lucide-react';
-
 import Link from 'next/link';
 import React, { Suspense } from 'react';
 import Card from '@/components/ui/Card';
@@ -10,13 +9,7 @@ import ProductDetails, {
 } from '@/features/product/components/ProductDetails';
 import Reviews, { ReviewsSkeleton } from '@/features/product/components/Reviews';
 
-type Props = {
-  params: Promise<{
-    id: string;
-  }>;
-};
-
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: PageProps<'/product/[id]'>) {
   const { id } = await params;
   const productId = Number(id);
   preloadProductDetails(productId);

@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     },
     useCache: true,
   },
+  typedRoutes: true,
 };
 
 module.exports = nextConfig;

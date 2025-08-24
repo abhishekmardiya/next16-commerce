@@ -7,12 +7,13 @@ import { cache } from 'react';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 import { getCurrentAccount, getIsAuthenticated } from './auth-queries';
+import type { Route } from 'next';
 
 export const verifyAuth = cache(async (redirectUrl?: string) => {
   const user = await getCurrentAccount();
   if (!user) {
     if (redirectUrl) {
-      redirect('/sign-in?redirectUrl=' + redirectUrl);
+      redirect(`/sign-in?redirectUrl=${redirectUrl}`);
     } else {
       redirect('/sign-in');
     }
@@ -29,7 +30,7 @@ export async function signOut() {
   revalidatePath('/');
 }
 
-export async function signIn(email: string, redirectUrl?: string) {
+export async function signIn(email: string, redirectUrl?: Route | URL) {
   await slow();
 
   const account = await prisma.account.findFirst({
@@ -43,7 +44,7 @@ export async function signIn(email: string, redirectUrl?: string) {
   }
 
   (await cookies()).set('selectedAccountId', account?.id);
-  redirect(redirectUrl || '/');
+  redirect((redirectUrl || '/') as Route);
 }
 
 export async function signInORedirect() {

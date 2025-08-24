@@ -2,13 +2,7 @@ import React, { Suspense } from 'react';
 import Modal from '@/components/ui/Modal';
 import Product, { ProductSkeleton } from '@/features/product/components/Product';
 
-type Props = {
-  params: Promise<{
-    id: number;
-  }>;
-};
-
-export default async function ProductModal({ params }: Props) {
+export default async function ProductModal({ params }: PageProps<'/product/[id]'>) {
   const { id } = await params;
   const productId = Number(id);
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Next 15 Commerce',
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en">
       <body className={inter.className}>

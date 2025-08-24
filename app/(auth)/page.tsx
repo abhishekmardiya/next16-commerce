@@ -6,16 +6,14 @@ import { DiscountBanner } from '@/components/banner/Banner';
 import LinkStatus from '@/components/ui/LinkStatus';
 import ProductList, { ProductListSkeleton } from '@/features/product/components/ProductList';
 
-type Props = {
-  searchParams: Promise<{
-    page?: string;
-    q: string;
-    sort?: 'asc' | 'desc';
-  }>;
+type SearchParams = {
+  page?: string;
+  q?: string;
+  sort?: 'asc' | 'desc';
 };
 
-export default async function RootPage({ searchParams }: Props) {
-  const { q, sort, page } = await searchParams;
+export default async function RootPage({ searchParams }: PageProps<'/'>) {
+  const { q, sort, page } = (await searchParams) as SearchParams;
   const currentPage = page ? parseInt(page, 10) : 1;
 
   return (
