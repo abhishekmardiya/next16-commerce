@@ -56,3 +56,7 @@ export async function signInORedirect() {
     redirect('/sign-in');
   }
 }
+
+export const getCurrentAccountAction = cache(async () => {
+  return getCurrentAccount();
+});
