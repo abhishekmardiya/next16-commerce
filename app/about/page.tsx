@@ -13,13 +13,11 @@ export default function AboutPage() {
             <h1>About Our Store</h1>
             <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">Welcome to our modern e-commerce experience</p>
           </div>
-
           <div className="text-center">
             <form action={signInORedirect}>
               <Button>Start Shopping</Button>
             </form>
           </div>
-
           <div className="grid gap-8 md:grid-cols-2">
             <Card>
               <h2>Our Mission</h2>
