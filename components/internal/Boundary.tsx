@@ -43,24 +43,39 @@ export default function Boundary({ children, rendering, hydration, label, showLa
 
   let colorClasses = '';
   let labelText = '';
+  let labelColor = '';
 
   if (showRendering) {
     colorClasses = renderingColors[rendering!];
     if (showLabel) {
       labelText = label || `${rendering} rendering`;
+      labelColor =
+        rendering === 'dynamic'
+          ? 'text-blue-700 dark:text-blue-300'
+          : rendering === 'hybrid'
+            ? 'text-purple-700 dark:text-purple-300'
+            : 'text-red-700 dark:text-red-300';
     }
   } else if (showComponent) {
     colorClasses = componentColors[hydration!];
     if (showLabel) {
       labelText = label || `${hydration} component`;
+      labelColor =
+        hydration === 'client'
+          ? 'text-blue-700 dark:text-blue-300'
+          : hydration === 'hybrid'
+            ? 'text-purple-700 dark:text-purple-300'
+            : 'text-red-700 dark:text-red-300';
     }
   }
 
   return (
-    <div className={cn('relative rounded-md border-2 border-dashed p-2', colorClasses)}>
+    <div className={cn('relative rounded-md border-2 border-dashed p-2 pt-6', colorClasses)}>
       {showLabel && labelText && (
         <div className="absolute -top-2 left-2">
-          <div className="rounded border bg-white px-2 py-0.5 font-mono text-xs text-gray-900 shadow-sm dark:bg-black dark:text-gray-100">
+          <div
+            className={cn('rounded border bg-white px-2 py-0.5 font-mono text-xs shadow-sm dark:bg-black', labelColor)}
+          >
             {labelText}
           </div>
         </div>
