@@ -1,6 +1,7 @@
 import 'server-only';
 
 import { cacheLife } from 'next/dist/server/use-cache/cache-life';
+import { cacheTag } from 'next/dist/server/use-cache/cache-tag';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { prisma } from '@/db';
@@ -10,6 +11,7 @@ import { verifyAuth } from '../auth/auth-actions';
 export const getProduct = cache(async (productId: number) => {
   'use cache';
   cacheLife('days');
+  cacheTag('product-' + productId);
 
   await slow();
 
@@ -25,6 +27,7 @@ export const getProduct = cache(async (productId: number) => {
 export const getProductDetails = cache(async (productId: number) => {
   'use cache';
   cacheLife('days');
+  cacheTag('product-' + productId);
 
   await slow();
 
@@ -85,9 +88,6 @@ export const getReviews = cache(async (productId: number) => {
 });
 
 export const getCategories = cache(async () => {
-  'use cache';
-  cacheLife('days');
-
   await slow();
 
   const categories = await prisma.product.findMany({
