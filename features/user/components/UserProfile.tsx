@@ -9,7 +9,7 @@ export default async function UserProfile() {
   const account = await getCurrentAccount();
 
   return (
-    <Boundary rendering="dynamic">
+    <Boundary rendering="dynamic" hydration="server">
       <div className="flex items-center gap-2">
         <div className="flex flex-col items-end gap-1">
           {account && <span className="text-sm">{account.name}</span>}
