@@ -8,7 +8,7 @@ import { logOut } from '../auth-actions';
 export default function LoginButton() {
   const [isPending, startTransition] = useTransition();
   const { loggedIn } = useAuth();
-  const isAuth = use(loggedIn);
+  const isLoggedIn = use(loggedIn);
   const router = useRouter();
 
   return (
@@ -16,7 +16,7 @@ export default function LoginButton() {
       aria-disabled={isPending}
       className="text-primary hover:text-primary-dark aria-disabled:text-gray cursor-pointer text-sm transition-colors aria-disabled:cursor-not-allowed aria-disabled:italic"
       onClick={() => {
-        if (isAuth) {
+        if (isLoggedIn) {
           startTransition(async () => {
             await logOut();
           });
@@ -25,7 +25,7 @@ export default function LoginButton() {
         }
       }}
     >
-      {isAuth ? 'Sign out' : 'Sign in'} {isPending && '...'}
+      {isLoggedIn ? 'Sign out' : 'Sign in'} {isPending && '...'}
     </button>
   );
 }
