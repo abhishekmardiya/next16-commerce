@@ -11,22 +11,24 @@ export default async function AuthLayout({ children, modal }: LayoutProps<'/'>) 
   return (
     <AuthProvider loggedIn={loggedIn}>
       <AppLayout headerContent={<Suspense fallback={<UserProfileSkeleton />}>{<UserProfile />}</Suspense>}>
-        <Suspense
-          fallback={
-            <>
-              <div className="skeleton-animation mb-4 h-30 w-full rounded-lg" />
-              <div className="skeleton-animation mb-4 h-10 w-full rounded-lg" />
-              <div className="flex h-full grow flex-col gap-4">
-                <div className="skeleton-animation h-6 w-24 rounded" />
-                <ProductListSkeleton />
-              </div>
-            </>
-          }
-        >
+        <Suspense fallback={<AuthPageSkeleton />}>
           {children}
           {modal}
         </Suspense>
       </AppLayout>
     </AuthProvider>
+  );
+}
+
+function AuthPageSkeleton() {
+  return (
+    <>
+      <div className="skeleton-animation mb-4 h-30 w-full rounded-lg" />
+      <div className="skeleton-animation mb-4 h-10 w-full rounded-lg" />
+      <div className="flex h-full grow flex-col gap-4">
+        <div className="skeleton-animation h-6 w-24 rounded" />
+        <ProductListSkeleton />
+      </div>
+    </>
   );
 }
