@@ -19,7 +19,8 @@ export function preloadProductDetails(productId: number) {
 
 export default async function ProductDetails({ productId, children }: Props) {
   'use cache';
-  cacheLife('days');
+
+  cacheLife('max');
   cacheTag('product-' + productId);
 
   const productDetails = await getProductDetails(productId);

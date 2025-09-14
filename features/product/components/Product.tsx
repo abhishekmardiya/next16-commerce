@@ -4,7 +4,6 @@ import React from 'react';
 import Boundary from '@/components/internal/Boundary';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import Skeleton from '@/components/ui/Skeleton';
-
 import { cn } from '@/utils/cn';
 import { getProduct } from '../product-queries';
 
@@ -16,7 +15,8 @@ type Props = {
 
 export default async function Product({ productId, details, imageClassName }: Props) {
   'use cache';
-  cacheLife('days');
+
+  cacheLife('max');
   cacheTag('product-' + productId);
 
   const product = await getProduct(productId);

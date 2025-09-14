@@ -1,6 +1,5 @@
 import { Star } from 'lucide-react';
-import { cacheLife } from 'next/dist/server/use-cache/cache-life';
-import { cacheTag } from 'next/dist/server/use-cache/cache-tag';
+
 import React from 'react';
 import Boundary from '@/components/internal/Boundary';
 import { getReviews } from '../product-queries';
@@ -10,10 +9,6 @@ type Props = {
 };
 
 export default async function Reviews({ productId }: Props) {
-  'use cache';
-  cacheLife('hours');
-  cacheTag('reviews-' + productId);
-
   const reviews = await getReviews(productId);
 
   return (

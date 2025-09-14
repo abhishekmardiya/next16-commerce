@@ -1,5 +1,5 @@
 import './globals.css';
-import { cacheLife } from 'next/dist/server/use-cache/cache-life';
+
 import { Inter } from 'next/font/google';
 import Footer from '@/components/Footer';
 import { BoundaryProvider } from '@/components/internal/BoundaryProvider';
@@ -12,9 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
-  'use cache';
-  cacheLife('max');
-
   return (
     <html lang="en">
       <body className={inter.className}>

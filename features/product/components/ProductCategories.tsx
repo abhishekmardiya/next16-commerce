@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/dist/server/use-cache/cache-life';
 import { cacheTag } from 'next/dist/server/use-cache/cache-tag';
 import Link from 'next/link';
 import React from 'react';
@@ -7,7 +8,9 @@ import { getCategories } from '../product-queries';
 
 export default async function ProductCategories() {
   'use cache';
+
   cacheTag('categories');
+  cacheLife('max');
 
   const categories = await getCategories();
 
