@@ -22,12 +22,12 @@ export default async function Discounts() {
           return (
             <div
               key={discount.id}
-              className="border-divider dark:border-divider-dark flex items-center justify-between rounded-lg border p-4"
+              className="border-divider dark:border-divider-dark dark:bg-card-dark flex items-center justify-between border bg-white p-4"
             >
               <div className="flex items-center gap-3">
                 <Percent className="text-primary h-5 w-5" />
                 <div>
-                  <p className="font-medium">{discount.code}</p>
+                  <p className="font-medium uppercase">{discount.code}</p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">{discount.description}</p>
                 </div>
               </div>
@@ -51,7 +51,7 @@ export function DiscountsSkeleton() {
         return (
           <div
             key={index}
-            className="border-divider dark:border-divider-dark flex items-center justify-between rounded-lg border p-[22px]"
+            className="border-divider dark:border-divider-dark dark:bg-card-dark flex items-center justify-between border bg-white p-[22px]"
           >
             <div className="flex items-center gap-3">
               <div className="skeleton-animation h-5 w-5 rounded" />

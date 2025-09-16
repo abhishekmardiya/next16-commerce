@@ -26,12 +26,12 @@ export default async function SavedProducts() {
           return (
             <div
               key={product.id}
-              className="border-divider dark:border-divider-dark flex items-center gap-4 rounded-lg border p-4 transition-colors hover:bg-gray-50 dark:hover:bg-neutral-800/50"
+              className="border-divider dark:border-divider-dark dark:bg-card-dark flex items-center gap-4 border bg-white p-4 transition-colors hover:bg-gray-50 dark:hover:bg-neutral-800/50"
             >
-              <ImagePlaceholder className="size-16 flex-shrink-0 rounded" />
+              <ImagePlaceholder className="size-16 flex-shrink-0" />
               <div className="min-w-0 flex-1">
                 <Link href={`/product/${product.id}`} className="block">
-                  <h3 className="truncate font-medium">{product.name}</h3>
+                  <h3 className="truncate font-medium uppercase">{product.name}</h3>
                   <p className="text-primary mt-1 font-medium">${product.price.toFixed(2)}</p>
                 </Link>
               </div>
@@ -46,13 +46,13 @@ export default async function SavedProducts() {
 
 export function SavedProductsSkeleton() {
   return (
-    <div className="border-divider dark:border-divider-dark flex items-center gap-4 rounded-lg border p-4">
+    <div className="border-divider dark:border-divider-dark dark:bg-card-dark flex items-center gap-4 rounded-lg border bg-white p-4">
       <div className="size-16 flex-shrink-0 rounded bg-gray-200 dark:bg-neutral-800" />
       <div className="flex-1">
-        <div className="h-5 w-3/4 rounded bg-neutral-200 dark:bg-neutral-800" />
-        <div className="mt-2 h-4 w-1/3 rounded bg-neutral-200 dark:bg-neutral-800" />
+        <div className="skeleton-animation h-5 w-3/4 rounded" />
+        <div className="skeleton-animation mt-2 h-4 w-1/3 rounded" />
       </div>
-      <div className="h-8 w-8 rounded bg-neutral-200 dark:bg-neutral-800" />
+      <div className="skeleton-animation h-8 w-8 rounded" />
     </div>
   );
 }
