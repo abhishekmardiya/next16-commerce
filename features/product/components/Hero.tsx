@@ -10,7 +10,7 @@ import type { Route } from 'next';
 
 let featuredIndex = 0;
 
-async function resetFeatured() {
+async function refreshFeatured() {
   'use server';
 
   // Cycle featuredIndex between 1 and 4
@@ -52,7 +52,7 @@ export default async function Hero() {
               />
               <LinkButton title="Browse All" link="/all" variant="secondary" />
             </div>
-            <form action={resetFeatured}>
+            <form action={refreshFeatured}>
               <Button title="Reset" variant="secondary">
                 Refresh
               </Button>
