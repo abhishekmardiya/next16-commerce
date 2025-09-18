@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default async function Product({ productId, details, imageClassName }: Props) {
-  'use cache';
+  'use cache: remote';
 
   cacheLife('max');
   cacheTag('product-' + productId);

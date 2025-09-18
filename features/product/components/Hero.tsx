@@ -20,7 +20,7 @@ export async function refreshFeatured() {
 }
 
 export default async function Hero() {
-  'use cache';
+  'use cache: remote';
 
   cacheTag('featured-product');
   cacheLife('hours');

@@ -1,4 +1,4 @@
-'use cache';
+'use cache: remote';
 
 import Modal from '@/components/ui/Modal';
 

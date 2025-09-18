@@ -7,7 +7,7 @@ import ShowMore from '@/components/ui/ShowMore';
 import { getCategories } from '../category-queries';
 
 export default async function Categories() {
-  'use cache';
+  'use cache: remote';
 
   cacheTag('categories');
   cacheLife('max');

@@ -7,7 +7,7 @@ import { getCategoriesWithCount } from '../category-queries';
 import type { Route } from 'next';
 
 export default async function FeaturedCategories() {
-  'use cache';
+  'use cache: remote';
 
   cacheTag('categories');
   cacheLife('hours');
