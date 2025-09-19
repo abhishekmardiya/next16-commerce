@@ -13,7 +13,6 @@ export default function AboutPage() {
     <AppLayout>
       <Boundary rendering="static">
         <div className="mx-auto max-w-6xl space-y-16">
-          {/* Hero Section */}
           <div className="space-y-6 text-center">
             <span className="mb-4 inline-block w-fit bg-black px-2.5 py-1 text-xs font-bold tracking-[0.2em] text-white uppercase dark:bg-white dark:text-black">
               About Us
