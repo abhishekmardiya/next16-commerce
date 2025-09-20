@@ -54,7 +54,7 @@ export default async function Reviews({ productId }: Props) {
 
 export function ReviewsSkeleton() {
   return (
-    <div className="my-2 p-2">
+    <div className="my-2 mb-5 p-2">
       <div className="skeleton-animation mb-2 h-3 w-10 rounded-xs" />
       <div className="skeleton-animation mb-2 h-4 rounded-xs" />
       <div className="skeleton-animation mb-2 h-4 rounded-xs" />
