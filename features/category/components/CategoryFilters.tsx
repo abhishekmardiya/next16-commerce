@@ -7,7 +7,7 @@ export default async function CategoryFilters() {
   const categories = await getCategories();
 
   return (
-    <Boundary hydration="server" rendering="hybrid">
+    <Boundary hydration="server">
       <div className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">
         <Suspense fallback={<CategoryFilterButtonSkeleton />}>
           <CategoryFilterButton>All</CategoryFilterButton>
