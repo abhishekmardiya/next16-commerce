@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, DialogHeading } from '@ariakit/react';
+import { Dialog, DialogDismiss, DialogHeading } from '@ariakit/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Boundary from '../internal/Boundary';
@@ -43,9 +43,13 @@ export default function Modal({ open, setOpen, children, goBackOnClose = false, 
           )}
           <div className="max-h-[70vh] overflow-y-auto p-5">{children}</div>
           <div className="border-divider dark:border-divider-dark flex justify-end border-t px-5 py-4">
-            <Button onClick={handleClose} variant="secondary" type="button">
-              Close
-            </Button>
+            <DialogDismiss
+              render={
+                <Button variant="secondary" type="button">
+                  Close
+                </Button>
+              }
+            />
           </div>
         </div>
       </Dialog>
