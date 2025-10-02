@@ -1,6 +1,5 @@
-import { Search } from 'lucide-react';
 import React, { Suspense } from 'react';
-import { SearchSkeleton } from '@/components/Search';
+import Search, { SearchSkeleton } from '@/components/Search';
 import SortButton, { SortButtonSkeleton } from '@/components/SortButton';
 import WelcomeBanner from '@/components/banner/WelcomeBanner';
 import CategoryFilters from '@/features/category/components/CategoryFilters';
