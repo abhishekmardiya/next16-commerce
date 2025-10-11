@@ -108,8 +108,9 @@
 
 ## Final demo
 
+- Go to deployed version.
 - See all boundaries, cached stuff. Initial page loads. Almost my entire page is already available.
-- Again, every cached segment will be a part of the statically generated shell from Partial Prerendering, and can also be prefetched for even faster navigations.
+- Again, every cached segment will be a part of the statically generated shell from Partial Prerendering, and can also be prefetched for even faster navigations. That's only in deployed that prefetching is enabled.
 - And with static shell prefetching, we don't see the params of the product on client side navs, because they're already known. We see them only on the initial load here, after that the remote cache handles it.
 - Show revalidation working with cacheTag.
 - Follow best practices and it should all just work out the box, giving you max performance.
