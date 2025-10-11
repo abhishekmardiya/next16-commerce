@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
-import { Suspense } from 'react';
 import Categories from '@/features/category/components/Categories';
 import Boundary from './internal/Boundary';
 
@@ -8,9 +7,7 @@ export default async function Footer() {
   return (
     <footer className="bg-white dark:bg-black">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-10">
-        <Suspense fallback={<div>Hi Sam</div>}>
-          <Categories />
-        </Suspense>
+        <Categories />
         <Boundary rendering="static">
           <div className="border-divider dark:border-divider-dark my-6 border-b" />
           <div className="text-gray dark:text-gray text-center text-sm">
