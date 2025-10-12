@@ -90,7 +90,7 @@
 - Add "use cache" and cacheTag to the categories. Now it's fast on both about and home, we can remove this suspense boundary and skeleton. Worry less about millions of skeletons. Mark it as "cached".
 - One cache key linked to components, no hassle revalidating many different pages.
 - No longer page level static/dynamic.
-- And every cached segment will included in the statically generated shell from Partial Prerendering, and can also be prefetched for even faster navigations, cached on the CDN. PPR goes down as far as the cache goes, until it meets a dynamic API.
+- And every cached segment will included in the statically generated shell from Partial Prerendering, cached on the CDN. PPR goes down as far as the cache goes, until it meets a dynamic API.
 - Add "use cache" to the category filters, and mark as hybrid and cached. Error, search params resolving too high: don't, or use client comps! Refactor to resolve deeper down. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore.
 - Also, we are getting help identifying blocking calls.
 - Add "use cache" and mark cache on all hybrid components inside the home page: Hero, FeaturedProducts, FeaturedCategories. Now they're all fast. Remove suspense.
@@ -113,9 +113,9 @@
 - See the initial page loads. Almost my entire page is already available. So fast.
 - See all boundaries, cached stuff.
 - Again, every cached segment will be a part of the statically generated shell from Partial Prerendering.
-- On client side navs, it can also be prefetched for even faster navigations. Only in deployed that prefetching is enabled. Params are already known for the entire page.
+- On client side navs, it can also be prefetched for even faster navigations. Only in deployed that prefetching is enabled. Params are already known for the entire page. It's so fast!
 - We don't see the params of the product on client side navs, because they're already known. We see them only on the initial load here, after that the remote cache handles it.
 - Show revalidation working with cacheTag.
 - Follow best practices and it should all just work out the box, giving you max performance.
-- There is no reason to be avoiding dynamic APIs anymore. There is not static and dynamic pages.
+- There is no reason to be avoiding dynamic APIs anymore. There is not static and dynamic pages. No weird hacks or workarounds or multiple data fetching strategies.
 - Every data fetch is server components! One paradigm, one mental model, performant and composable by default.
