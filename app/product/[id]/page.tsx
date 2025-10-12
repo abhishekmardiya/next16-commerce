@@ -10,9 +10,9 @@ import ProductDetails, {
 } from '@/features/product/components/ProductDetails';
 import Reviews, { ReviewsSkeleton } from '@/features/product/components/Reviews';
 
-export async function generateStaticParams() {
-  return [{ id: '1' }, { id: '2' }, { id: '3' }, { id: '4' }];
-}
+// export async function generateStaticParams() {
+//   return [{ id: '1' }, { id: '2' }, { id: '3' }, { id: '4' }];
+// }
 
 export default async function ProductPage({ params }: PageProps<'/product/[id]'>) {
   const { id } = await params;
