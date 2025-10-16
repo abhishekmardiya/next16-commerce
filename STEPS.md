@@ -89,25 +89,34 @@
 
 ## Excessive dynamic rendering -> Composable caching with 'use cache'
 
+### Home page
+
 - Now, everything here that's marked as hybrid can be cached. It's async and fetching something, but it does not depend on dynamic APIs, so we can share it across multiple users. Notice how right now its loading on every request.
 - Enable cacheComponents. This will opt all our async calls into request time calls, and also give us errors whenever a dynamic API does not have a suspense boundary above it. You can also use just useCache, but cacheComponents will help us make good decisions regarding loading states and caching.
 - Add "use cache" to the Hero to cache this. Now it's non longer running on the server. Add cacheTag for reval. Mark it as "cached". We can remove this suspense boundary and skeleton. Worry less about millions of skeletons. See it's no longer loading.
 - One cache key linked to components, no hassle revalidating many different pages.
 - We are no longer bound to page level static/dynamic rendering.
 - Do the same for the FeaturedProducts and FeaturedCategories: use cache and mark, remove suspense. Now they're all cached, no longer loading on every request. Only thing that loads is the personalized content.
-- And every cached segment will included in the statically generated shell from Partial Prerendering, cached on the CDN. PPR goes down as far as the cache goes, until it meets a dynamic API.
-- See the rest of the boundaries pre-marked on other pages: all products.
-- Add "use cache" to the category filters, and mark as hybrid and cached. Error, search params resolving too high: don't, or use client comps! Refactor to resolve deeper down. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore.
-- Also, we are getting help identifying blocking calls.
-- Add "use cache" and mark cache on all hybrid components inside the home page: Hero, FeaturedProducts, FeaturedCategories. Now they're all fast. Remove suspense.
 - That's why my pattern in the home page is good for both composition and PPR. I already refactored it alot, and it's making it alot easier for me, letting me cache bigger chunks here.
-- Add use cache to the Reviews, with cacheLife seconds. Keep the suspense. Mark cached.
+- And every cached segment will included in the statically generated shell from Partial Prerendering, cached on the CDN. PPR goes down as far as the cache goes, until it meets a dynamic API.
+
+### All page
+
+- See the rest of the boundaries pre-marked on other pages: all products.
+- Error in all page from nextjs, search params resolving too high: don't, or use client comps like in the filters! Refactor to resolve deeper down. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore. Error gone, suspended by the product list.
+- Keep my Products hybrid, because I want them fresh.
+- Also, we are getting help identifying blocking calls.
+- Add use cache to the Categories, remove suspense, mark cached.
+
+### Product page TODO
+
 - For the Product, it's inside params, so it can't be static. But, we can still use generateStaticParams. Add an example generateStaticParams.
 - And also use "use cache: remote" to cache it between requests to avoid some server load. Inside dynamic API, we still need to add suspense. Mark cached.
-- Can only use cache async functions, but since we already use the donut here it’s not a problem for the modal, allowing us to cache more content as well as getting compositional benefits.
 - (We can also "use cache" the layout to build up our cache here and avoid this params resolving. By the way, you wouldn't see this locally, only deployed).
+- Can only use cache async functions, but since we already use the donut here it’s not a problem for the modal, allowing us to cache more content as well as getting compositional benefits.
 - Try add use cache to the ProductDetails. It fails, exposing our dynamic API. Why? We have a dynamic dep. A pretty cool optimistic save product button. This is also useful for debugging btw. Since the dynamic dep is slotted, we can still cache the productDetails itself! Donut pattern, but for caching. Cache gymnastics.
 - There is no suspense here, add suspense for better UX around the dynamic content. This is whats happening all over our app with pages and layouts. We could also cache the data, but this is a showcase.
+- Add use cache to the Reviews, with cacheLife seconds. Keep the suspense. Mark cached.
 - Our authProvider does not make it dynamic as long as the components using it are suspended, just like searchParams!
 - For incrementally adopting, we would need to start high up with a dep, then build down and refactor out our dynamic APIs. Or use the plain useCache, but for future proofing, consider cache components.
 - Done with the codebase refactor. My route tree is primarily the same. Just following RSC best practices and adding caching. And doing some RSC if I want to optimize, but thats totally voluntary, and depends on your use cases.
