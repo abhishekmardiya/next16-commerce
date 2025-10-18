@@ -14,7 +14,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export default async function ProductDetails({ productId, children }: Props) {
+export default async function ProductDetails({ productId }: Props) {
   const productDetails = await getProductDetails(productId);
   const setFeaturedForProduct = setFeaturedProduct.bind(null, productId);
 
@@ -48,7 +48,9 @@ export default async function ProductDetails({ productId, children }: Props) {
           </p>
           <div className="mt-6">
             <Divider variant="dotted" className="mb-4" />
-            <div className="flex flex-wrap gap-4">{children}</div>
+            <div className="flex flex-wrap gap-4">
+              <SavedProduct productId={productId} />
+            </div>
           </div>
         </div>
       </div>
