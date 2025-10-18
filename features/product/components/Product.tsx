@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default async function Product({ productId, details, imageClassName }: Props) {
-  'use cache: remote';
+  'use cache';
 
   cacheTag('product-' + productId);
 
