@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import BackButton from '@/components/ui/BackButton';
 import Card from '@/components/ui/Card';
 import Product from '@/features/product/components/Product';
-import ProductDetails, { ProductDetailsSkeleton, SavedProduct } from '@/features/product/components/ProductDetails';
+import ProductDetails, { SavedProduct } from '@/features/product/components/ProductDetails';
 import Reviews, { ReviewsSkeleton } from '@/features/product/components/Reviews';
 
 export default async function ProductPage({ params }: PageProps<'/product/[id]'>) {
@@ -19,13 +19,11 @@ export default async function ProductPage({ params }: PageProps<'/product/[id]'>
           <Product
             productId={productId}
             details={
-              <Suspense key={productId} fallback={<ProductDetailsSkeleton />}>
-                <ProductDetails productId={productId}>
-                  <Suspense fallback={<Bookmark aria-hidden className="text-gray size-5" />}>
-                    <SavedProduct productId={productId} />
-                  </Suspense>
-                </ProductDetails>
-              </Suspense>
+              <ProductDetails productId={productId}>
+                <Suspense fallback={<Bookmark aria-hidden className="text-gray size-5" />}>
+                  <SavedProduct productId={productId} />
+                </Suspense>
+              </ProductDetails>
             }
           />
         </Card>

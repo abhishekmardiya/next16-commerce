@@ -107,16 +107,15 @@
 - Keep my Products hybrid, because I want them fresh.
 - Also, we are getting help identifying blocking calls.
 - Add use cache to the Categories, remove suspense, mark cached.
+- Can only use cache async functions, but since we already use the donut here it’s not a problem for the ShowMore, allowing us to cache more content as well as getting compositional benefits.
 
 ### Product page TODO
 
-- For the Product, it's inside params, so it can't be static. But, we can still use generateStaticParams. Add an example generateStaticParams.
-- And also use "use cache: remote" to cache it between requests to avoid some server load. Inside dynamic API, we still need to add suspense. Mark cached.
-- (We can also "use cache" the layout to build up our cache here and avoid this params resolving. By the way, you wouldn't see this locally, only deployed).
-- Can only use cache async functions, but since we already use the donut here it’s not a problem for the modal, allowing us to cache more content as well as getting compositional benefits.
-- Try add use cache to the ProductDetails. It fails, exposing our dynamic API. Why? We have a dynamic dep. A pretty cool optimistic save product button. This is also useful for debugging btw. Since the dynamic dep is slotted, we can still cache the productDetails itself! Donut pattern, but for caching. Cache gymnastics.
+- Try add use cache to the product page. It fails, exposing our dynamic API. Why? We have a dynamic dep. A pretty cool optimistic save product button. This is also useful for debugging btw. Since the dynamic dep is slotted, we can still cache the productDetails itself! Donut pattern, but for caching. Cache gymnastics.
+- And also use "use cache" to Product, mark cached.
 - There is no suspense here, add suspense for better UX around the dynamic content. This is whats happening all over our app with pages and layouts. We could also cache the data, but this is a showcase.
 - Add use cache to the Reviews, with cacheLife seconds. Keep the suspense. Mark cached.
+- We will still see this params resolve in the deployment, it's inside params, so it can't be static. In build, we won't be able to cache it inside dynamic APIs. But, we can still use generateStaticParams. Add an example generateStaticParams. Now it will be cached.
 - Our authProvider does not make it dynamic as long as the components using it are suspended, just like searchParams!
 - For incrementally adopting, we would need to start high up with a dep, then build down and refactor out our dynamic APIs. Or use the plain useCache, but for future proofing, consider cache components.
 - Done with the codebase refactor. My route tree is primarily the same. Just following RSC best practices and adding caching. And doing some RSC if I want to optimize, but thats totally voluntary, and depends on your use cases.
