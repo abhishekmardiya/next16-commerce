@@ -111,6 +111,7 @@ async function PersonalMembershipTile() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function MembershipTile() {
   return (
     <Suspense fallback={<GeneralMembershipTile />}>

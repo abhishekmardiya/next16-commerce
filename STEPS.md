@@ -8,7 +8,6 @@
 - Purposefully added slowness to my data fetching.
 - This is a regular next.js codebase, nothing fancy, however, keep in mind we have a good mix of static and dynamic content because of our user dependent features.
 - Let's say the team here has reported issues with architecture and prop drilling, excessive client side JS, and lack of static rendering strategies leading to additional server costs and degraded performance.
-
 - The goal here is to improve this regular Next.js codebase and enhance it with modern patterns, regarding architecture, composition, and caching capabilities, to make it faster, more scalable, and easier to maintain.
 - (Improvements based on my exp building with server comp also and other codebases I have seen, and what devs commonly do wrong or struggle to find solutions for).
 
