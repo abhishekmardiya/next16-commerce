@@ -81,7 +81,7 @@
 
 - What if we could avoid all of these tactics? Go back to real vscode.
 - First', let's review the state of our app. Let's go back to our banner on the Home page.
-- Mixing static and dynamic rendering here, nice pattern to avoid CLS. Mark them both. Toggle the rendering boundary, see the dynamic static.
+- Mixing static and dynamic rendering here, nice pattern to avoid CLS. Mark them both. Toggle the rendering boundary, see the dynamic static, user profile dynamic too.
 - What about these other ones? Hero, FeaturedCategories, FeaturedProducts.
 - Hero.tsx is async, but doesn't depend on dynamic APIs. In a dynamic route, its slow. In a static, its fast. Mark hybrid, also notice mark on FeaturedCategories, FeaturedProducts.
 
