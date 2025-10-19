@@ -3,12 +3,12 @@
 ## Setup and problem
 
 - This is a e commerce demo app. The setup is the Next.js App Router, Prisma ORM and an Prisma Postgres DB, Tailwind CSS.
-- Demo app. Ecommerce mimic. Everything here looks pretty decent. Home page, browse page, login page, about page, profile page.
-- I have all my pages here. I'm using feature slicing to keep the app router folder clean and easy to read. Could also use the underscore components. Services and queries talking to my db.
+- Demo app. Ecommerce mimic. Everything here looks pretty decent. Home page, browse page, about page, login page, profile page.
+- I have all my pages here. I'm using feature slicing to keep the app router folder clean and easy to read. Services and queries talking to my db.
 - Purposefully added slowness to my data fetching.
-- (Also using typed routes to get these page props and type safe links).
-- This is a regular next.js codebase, nothing fancy, however, keep in mind we have a good mix of static and dynamic content.
-- Let's say the team here has reported issues with architecture and prop drilling, excessive client side JS, and need help utilizing static generation and caching.
+- This is a regular next.js codebase, nothing fancy, however, keep in mind we have a good mix of static and dynamic content because of our user dependent features.
+- Let's say the team here has reported issues with architecture and prop drilling, excessive client side JS, and lack of static rendering strategies leading to additional server costs and degraded performance.
+
 - The goal here is to improve this regular Next.js codebase and enhance it with modern patterns, regarding architecture, composition, and caching capabilities, to make it faster, more scalable, and easier to maintain.
 - (Improvements based on my exp building with server comp also and other codebases I have seen, and what devs commonly do wrong or struggle to find solutions for).
 
@@ -37,7 +37,7 @@
 
 - The next reported issue was excessive client side JS.
 - Check out this client-side Pagination. Client side due to nav status with a transition.Preventing default. This one is simple.
-- Remove loading spinner and transitions, replace with LinkStatus. A rather new nextjs feature, useLinkStatus. Like useFormStatus, avoid lack of feedback on stale navigation while waiting for the search param. Remove use client and excess code, see local pending state.
+- Remove loading spinner and transitions, replace with LinkStatus. A rather new nextjs feature, useLinkStatus. Like useFormStatus, avoid lack of feedback on stale navigation while waiting for the search param. Remove use client and excess code, see local pending state, using this also on the category links in the bottom here.
 - Revisit the WelcomeBanner. It's dismissing this with a useState(), and it has a motion.div animation. Switched to client side fetching with useSWR to make this interactive, multiple ways to fetch now with API layer, no types.
 - Also, we break separation of concerns by involving UI logic with data. Instead, let's extract a client component wrapper, and use whats referred to as the donut pattern. Cut all except top line of comp. New file bannerContainer: use client here, rename, children, wrapper. We won't covert the content of this to client because it's a prop, could be any prop. It's a reference to server-rendered content.
 - PersonalBanner switch to server fetching getDiscountData, isAuth and return general, and Delete API layer, no longer needed. Export WelcomeBanner with suspense.
@@ -104,6 +104,7 @@
 
 - See the rest of the boundaries pre-marked on other pages: all products.
 - Error in all page from nextjs, search params resolving too high: don't, or use client comps like in the filters! Refactor to resolve deeper down. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore. Error gone, suspended by the product list.
+- Dynamic is a scale, scaling it more towards static.
 - Keep my Products hybrid, because I want them fresh.
 - Also, we are getting help identifying blocking calls.
 - Add use cache to the Categories, remove suspense, mark cached.
@@ -118,20 +119,20 @@
 - Add use cache to the Reviews, with cacheLife seconds. Keep the suspense. Mark cached.
 - We will still see this params resolve in the deployment, it's inside params, so it can't be static. In build, we won't be able to cache it inside dynamic APIs. But, we can still use generateStaticParams. Add an example generateStaticParams. Now it will be cached.
 - Our authProvider does not make it dynamic as long as the components using it are suspended, just like searchParams!
-- For incrementally adopting, we would need to start high up with a dep, then build down and refactor out our dynamic APIs. Or use the plain useCache, but for future proofing, consider cache components.
-- Done with the codebase refactor. My route tree is primarily the same. Just following RSC best practices and adding caching. And doing some RSC if I want to optimize, but thats totally voluntary, and depends on your use cases.
-- We could continue this across the whole app, not changing anything in our component tree and structure.
+- For incrementally adopting cacheComponents, we would need to start high up with a dep, then build down and refactor out our dynamic APIs.
+- Done with the codebase refactor. My route tree is primarily the same. Just changing a few things to better follow RSC best practice and optimization and adding caching.
+- We could continue this caching across the whole app, not changing anything in our component tree and structure.
 
 ## Final demo
 
-- Go to deployed version. I added cache here to all components cachable.
+- I already did tha in this deployed version. I added cache here to all components cachable.
 - See the initial page loads. Almost my entire page is already available. So fast.
-- See all boundaries, cached stuff.
+- See all boundaries,client stuff, cached stuff.
 - Again, every cached segment will be a part of the statically generated shell from Partial Prerendering.
-- On client side navs, it can also be prefetched for even faster navigations. Only in deployed that prefetching is enabled. Params are already known for the entire page. It's so fast!
+- On client side navs, it can also be prefetched for even faster navigations. Only in deployed that prefetching is enabled. Params are already known for all links on the page.
 - Remember i have purposefully added slows, and i didn't optimize my db. Very simple nextjs app.
-- We don't see the params of the product on client side navs, because they're already known. We see them only on the initial load here, after that the remote cache handles it.
-- Show revalidation working with cacheTag.
-- Follow best practices and it should all just work out the box, giving you max performance.
-- There is no reason to be avoiding dynamic APIs anymore. There is not static and dynamic pages. No weird hacks or workarounds or multiple data fetching strategies.
-- Every data fetch is server components! One paradigm, one mental model, performant and composable by default.
+- We don't see the params of the product on client side navs, because they're already known. And for full page, they're cached at the CDN edge after first generation.
+- (Show revalidation working with cacheTag).
+- Follow best practice patterns I showcased and it should all just work out the box, giving you max performance.
+- There is no reason to be avoiding dynamic APIs anymore. There is not static and dynamic pages. No weird hacks or workarounds or multiple data fetching strategies or client fetching. Every data fetch is server components!
+- In modern Next.js, we can have one paradigm and one mental model, performant and composable by default.
