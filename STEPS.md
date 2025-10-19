@@ -37,7 +37,7 @@
 
 - The next reported issue was excessive client side JS.
 - Check out this client-side Pagination. Client side due to nav status with a transition.Preventing default. This one is simple.
-- Remove loading spinner and transitions, replace with LinkStatus. A rather new nextjs feature, useLinkStatus. Like useFormStatus, avoid lack of feedback on stale navigation while waiting for the search param. Remove use client and excess code, see local pending state.
+- Remove loading spinner and transitions, replace with LinkStatus. A rather new nextjs feature, useLinkStatus. Like useFormStatus, avoid lack of feedback on stale navigation while waiting for the search param. Remove use client and excess code, see local pending state, using this also on the category links in the bottom here.
 - Revisit the WelcomeBanner. It's dismissing this with a useState(), and it has a motion.div animation. Switched to client side fetching with useSWR to make this interactive, multiple ways to fetch now with API layer, no types.
 - Also, we break separation of concerns by involving UI logic with data. Instead, let's extract a client component wrapper, and use whats referred to as the donut pattern. Cut all except top line of comp. New file bannerContainer: use client here, rename, children, wrapper. We won't covert the content of this to client because it's a prop, could be any prop. It's a reference to server-rendered content.
 - PersonalBanner switch to server fetching getDiscountData, isAuth and return general, and Delete API layer, no longer needed. Export WelcomeBanner with suspense.
