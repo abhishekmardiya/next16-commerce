@@ -104,6 +104,7 @@
 
 - See the rest of the boundaries pre-marked on other pages: all products.
 - Error in all page from nextjs, search params resolving too high: don't, or use client comps like in the filters! Refactor to resolve deeper down. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore. Error gone, suspended by the product list.
+- Dynamic is a scale, scaling it more towards static.
 - Keep my Products hybrid, because I want them fresh.
 - Also, we are getting help identifying blocking calls.
 - Add use cache to the Categories, remove suspense, mark cached.
