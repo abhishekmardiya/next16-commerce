@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL") // Change to "file:./dev.db" with sqlite
+  provider = "sqlite" // other options: "postgresql", "mysql", "sqlserver"
+  url      = "file:./dev.db" // env("DATABASE_URL")
   // shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // For sqlserver, remove with sqlite and postgres
 }
 
