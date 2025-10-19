@@ -1,4 +1,4 @@
-# Next.js App Router Commerce
+# Next.js 16 Commerce
 
 A responsive and interactive e-commerce application built with Next.js App Router, built with Prisma and TailwindCSS, utilizing `use cache` for performance optimization.
 
