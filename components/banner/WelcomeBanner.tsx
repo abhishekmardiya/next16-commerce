@@ -34,13 +34,14 @@ export default function WelcomeBanner({ loggedIn }: { loggedIn: boolean }) {
 
 export function PersonalBanner({ loggedIn }: { loggedIn: boolean }) {
   const { data, isLoading } = useSWR('/api/discount-data', fetcher);
-  const { account, discounts, savedProducts } = data;
-  const featuredDiscount = discounts[0];
-  const firstName = account?.firstName || account?.name.split(' ')[0];
 
   if (isLoading || !loggedIn) {
     return <GeneralBanner />;
   }
+
+  const { account, discounts, savedProducts } = data;
+  const featuredDiscount = discounts[0];
+  const firstName = account?.firstName || account?.name.split(' ')[0];
 
   return (
     <Boundary>
