@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
     clientSegmentCache: true,
     inlineCss: true,
     routerBFCache: true,
-    staleTimes: {
-      dynamic: 30,
-    },
   },
   reactCompiler: true,
   typedRoutes: true,
