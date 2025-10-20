@@ -3,7 +3,7 @@
 ## Setup and problem
 
 - This is a e commerce demo app. The setup is the Next.js App Router, Prisma ORM and an Prisma Postgres DB, Tailwind CSS.
-- Demo app. Ecommerce mimic. Everything here looks pretty decent. Home page, browse page, about page, product page, login page, profile page. But too many loading states for an ecommerce app. Purposefully added slowness to my data fetching.
+- Demo app. Ecommerce mimic. Everything here looks pretty decent. Home page, browse page, product page, about page, login page, profile page. But too many loading states for an ecommerce app. Purposefully added slowness to my data fetching.
 - I have all my pages here. I'm using feature slicing to keep the app router folder clean and easy to read. Services and queries talking to my db.
 - This is a regular next.js codebase, nothing fancy, however, keep in mind we have a good mix of static and dynamic content because of our user dependent features.
 - Let's say the team here has reported issues with architecture and prop drilling, excessive client side JS, and lack of static rendering strategies leading to additional server costs and degraded performance.
@@ -91,7 +91,7 @@
 
 - Now, everything here that's marked as hybrid can be cached. It's async and fetching something, but it does not depend on request time information like cookies, so we can share it across multiple users. Notice how right now its loading on every request.
 - Enable cacheComponents. This will opt all our async calls into request time calls, and also give us errors whenever a dynamic API does not have a suspense boundary above it.
-- Add "use cache" to the Hero to cache this. Now it's non longer running on the server. Add cacheTag for reval. Mark it as "cached". We can remove this suspense boundary and skeleton. Worry less about millions of skeletons. See it's no longer loading.
+- Add "use cache" to the Hero to cache this. Now it's non longer running on the server. (Add cacheTag for reval). Mark it as "cached". We can remove this suspense boundary and skeleton. Worry less about millions of skeletons. See it's no longer loading.
 - (One cache key linked to components, no hassle revalidating many different pages).
 - We are no longer bound to page level static/dynamic rendering.
 - Do the same for the FeaturedProducts and FeaturedCategories: use cache and mark, remove suspense. Now they're all cached, no longer loading on every request. Only thing that loads is the personalized content.

@@ -12,11 +12,19 @@ export async function GET() {
     ]);
 
     return NextResponse.json({
-      account,
-      discounts,
-      savedProducts,
+      account: account || null,
+      discounts: discounts || [],
+      savedProducts: savedProducts || [],
     });
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch user data' }, { status: 500 });
+    return NextResponse.json(
+      {
+        account: null,
+        discounts: [],
+        error: 'Failed to fetch user data',
+        savedProducts: [],
+      },
+      { status: 500 },
+    );
   }
 }
