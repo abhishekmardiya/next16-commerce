@@ -14,7 +14,7 @@ export default function WelcomeBanner({ loggedIn }: { loggedIn: boolean }) {
 
   return (
     <Boundary hydration="client">
-      <div className="border-divider dark:border-divider-dark from-accent/5 via-accent/3 dark:from-accent/10 dark:via-accent/5 relative flex items-start justify-between gap-3 border bg-gradient-to-tr to-transparent p-4 sm:gap-4 sm:p-5 dark:to-transparent">
+      <div className="border-divider dark:border-divider-dark from-accent/5 via-accent/3 dark:from-accent/10 dark:via-accent/5 relative flex items-start justify-between gap-3 border bg-linear-to-tr to-transparent p-4 sm:gap-4 sm:p-5 dark:to-transparent">
         <div className="flex-1">
           <PersonalBanner loggedIn={loggedIn} />
         </div>
