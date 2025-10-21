@@ -105,8 +105,8 @@
 - See the rest of the boundaries pre-marked on other pages: all products. Categories and products. We can cache this too.
 - On reload though, error from nextjs, search params doesn't have a suspense above it, remember it's a dynamic API. CacheComponents tells us we should either cache or suspend this. Make a choice: I can either add back the loading.tsx from before, or shift this page more towards static.
 - With cacheComponents, dynamic is like a scale, and it's up to us to decide how much static we want. Let's create a bigger static shell here.
+- Also, we are getting help identifying blocking calls, which is common problem. CacheComponents will help us avoid performance issues.
 - Refactor to resolve deeper down, error gone. Now I have a bigger static shell, because the searchparams dont prevent this content from being statically generated anymore. Error gone, suspended by the product list.
-- Also, we are getting help identifying blocking calls, which is common problem. CacheComponents will help us avoid bad performance.
 - (Wich we just experienced earlier before adding this suspense. Remove it and show cacheComponents would have identified this blocking call for us, ensuring we don't create slow apps).
 - Add use cache to the CategoryFilters, mark cached, remove suspense.
 - Keep my Products hybrid, because I want them fresh.
@@ -129,8 +129,8 @@
 
 - Head over to a deployed version. Remember i have purposefully added a lot of slows to this app.
 - See the initial page loads. Almost my entire home page is already available. Only the personalized section and banner load. Navigate to the all products page, then the product page.
-- See the boundary: again, every cached segment will be a part of the statically generated shell from Partial Prerendering, giving us this extreme performance.
-- In prod, improved prefetching new client side router from next 16, shell is prefetched for even faster navigations. Params are already known for all links on the page. Clicking categories within the app already resolved search params, so the shell is already there. Only on reload can we see it resolve here.
+- See the boundary: again, every cached segment will be a part of the statically generated shell from Partial Prerendering, and in prod, improved prefetching new client side router from next 16, shell is prefetched for even faster navigations.
+- (Params are already known for all links on the page. Clicking categories within the app already resolved search params, so the shell is already there. Only on reload can we see it resolve here).
 - With just a few code changes and smart patterns, we improved components architecture, removed redundant client js and allowed for more component reuse, and improved performance drastically while reducing server costs.
 - To summarize, there is not static OR dynamic pages. We don't need to be avoiding dynamic APIs anymore, or compromise dynamic content. Skip creating complex hacks or workarounds or add multiple data fetching strategies, and make the developer experience worse, just for that cache HIT.
 - In modern Next.js with cacheComponents, dynamic vs static is a scale, and we decide how much static we want in our apps. We can use this one mental model, performant, composable and salable by default.
