@@ -42,7 +42,8 @@
 - PersonalBanner remove use client and switch to server fetching getDiscountData, isAuth and return general, and delete API layer, no longer needed. Export WelcomeBanner client wrapper with suspense. Type safe also.
 - Still have an error. For the motion.div, this simple animation might still be forcing the entire banner to be client. Let's move this to a MotionWrapper component, that can be reused for other animations. Could also switch to a react view transition! Back to server components now. Delete API layer.
 - Using this client wrapper pattern with a boundary UI helper. Turn on hydration mode, marking my components. See the donut pattern visual. Notice other boundaries, like client side search, and these server side categories.
-- Since we learned the donut pattern, let's use it for something else as well. I want to hide the some categories if theres many. Notice the individual server components here. We again want to avoid excessive client side JS, so avoid creating API endpoints and converting everything. Replace div with ShowMore client wrapper and React.Children to maintain our separation of concerns. Now, we have this reusable and interactive ShowMore wrapper, and reusable categories. Notice the boundaries client and server, donut pattern again.
+- (Since we learned the donut pattern, let's use it for something else as well. I want to hide the some categories if theres many. Notice the individual server components here. We again want to avoid excessive client side JS, so avoid creating API endpoints and converting everything. Replace div with ShowMore client wrapper and React.Children to maintain our separation of concerns. Now, we have this reusable and interactive ShowMore wrapper, and reusable categories. Notice the boundaries client and server, donut pattern again).
+- Notice, these categories in the footer are also utilizing the donut pattern! We have this reusable and interactive ShowMore wrapper, and reusable categories.
 - The compositional power of server components, Categories is passed into this ShowMore, handles its own data. Both can be used freely all over the app.
 - Donut pattern can be used for anything, like carousels and modals more. Actually using it for this quick preview modal, showcase modal boundary donut pattern again.
 - Now we have a pretty good architecture, best practice RSC patterns, utilizing composition, which means we can move further to the last issue, the most fun. Remove boundary UI.
@@ -51,9 +52,8 @@
 
 - The last issue is a lack of static rendering strategies. Demo again the problems.
 - See build output: The entire app is entirely dynamic, problem is clear. Every page has a dynamic API dependency.
-- This is preventing us from using static rendering benefits and for example using ISR, even though so much of the app is static. Wasting server resources constantly, quickly gets expensive, redundant.
+- This is preventing us from using static rendering benefits and for example using ISR, even though so much of the app is static. Wasting server resources constantly, slowing down our app. Why is this happening?
 - (Crawlers will wait for content and it can be indexed, and the QWV is not terrible, but it's slower than it needs to be).
-- Why is this happening?
 - The main culprit is actually this auth check in my layout. My header is hiding my user profile, which is using cookies, which is forcing dynamic rendering. Auth check in layout, which I definitely need. Classic mistake. Everything I do is now dynamically being run on the server.
 - Even my non-user personalized content on my home screen like the featured product, I need to suspend too to avoid blocking the page, and even my about page which doesn't even have a dynamic API dep! Because remember, my pages are either be static OR dynamic.
 - This is a common issue and something that's been solved before. Let's briefly see which solutions people might resort to in previous versions of Next.
