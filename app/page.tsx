@@ -40,9 +40,7 @@ export default async function HomePage() {
               access your dashboard and discover new offers!
             </p>
             <Suspense fallback={<GeneralMembershipTile />}>
-              <Boundary rendering="dynamic" hydration="server">
-                <PersonalMembershipTile />
-              </Boundary>
+              <PersonalMembershipTile />
             </Suspense>
           </div>
           <div className="border-divider dark:border-divider-dark border bg-black/5 p-6 dark:bg-white/10">
