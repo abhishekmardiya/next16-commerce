@@ -44,15 +44,9 @@ export default async function HomePage() {
             Unlock exclusive perks like extra discounts, early product launches, and priority support. Sign in to access
             your dashboard and discover new offers!
           </p>
-          {loggedIn ? (
-            <LinkButton href="/user" variant="primary">
-              Go to Dashboard
-            </LinkButton>
-          ) : (
-            <LinkButton href="/sign-in" variant="primary">
-              Sign In to Join
-            </LinkButton>
-          )}
+          <Suspense fallback={<GeneralMembershipLink />}>
+            <PersonalMembershipLink />
+          </Suspense>
         </div>
         <div className="border-divider dark:border-divider-dark border bg-black/5 p-6 dark:bg-white/10">
           <h3 className="mb-2 text-xl font-bold tracking-tight uppercase">Trade-In Program</h3>
@@ -98,7 +92,6 @@ async function PersonalizedSection() {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function PersonalMembershipLink() {
   const loggedIn = await getIsAuthenticated();
   if (!loggedIn) return <GeneralMembershipLink />;
