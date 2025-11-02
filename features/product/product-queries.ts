@@ -44,21 +44,19 @@ export const getProducts = cache(
     const skip = (page - 1) * limit;
 
     const whereClause: {
-      name?: { contains: string; mode: 'insensitive' };
-      category?: { equals: string; mode: 'insensitive' };
+      name?: { contains: string };
+      category?: { equals: string };
     } = {};
 
     if (searchQuery) {
       whereClause.name = {
         contains: searchQuery,
-        mode: 'insensitive' as const,
       };
     }
 
     if (category) {
       whereClause.category = {
         equals: category,
-        mode: 'insensitive' as const,
       };
     }
 
@@ -200,7 +198,6 @@ export const getRecommendedProducts = cache(async (limit = 4) => {
         where: {
           category: {
             equals: randomCategory,
-            mode: 'insensitive',
           },
           id: {
             notIn: savedProducts.map(sp => {

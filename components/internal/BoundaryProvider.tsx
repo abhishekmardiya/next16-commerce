@@ -44,8 +44,9 @@ export function BoundaryProvider({ children }: { children: React.ReactNode }) {
 
 export function useBoundaryMode() {
   const context = useContext(BoundaryContext);
+  // Return default context if not available (e.g., during SSR)
   if (!context) {
-    throw new Error('useBoundaryMode must be used within a BoundaryProvider');
+    return { mode: 'off' as BoundaryMode, setMode: () => {}, toggleMode: () => {} };
   }
   return context;
 }

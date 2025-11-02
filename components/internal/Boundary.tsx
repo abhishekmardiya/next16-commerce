@@ -29,7 +29,8 @@ const componentColors = {
 } as const;
 
 export default function Boundary({ children, rendering, hydration, label, showLabel = true, cached = false }: Props) {
-  const { mode } = useBoundaryMode();
+  const context = useBoundaryMode();
+  const mode = context?.mode ?? 'off';
   const containerRef = useRef<HTMLDivElement>(null);
   const [isSmall, setIsSmall] = useState(false);
 
